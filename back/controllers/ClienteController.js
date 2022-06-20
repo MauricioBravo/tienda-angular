@@ -68,6 +68,11 @@ const login_cliente = async function (req, res) {
 }
 
 const listar_clientes_filtro_admin = async function (req,res){
+
+    let reg = await Cliente.find();
+    res.status(200).send({data:reg});
+
+/*
 console.log(req.user);
     if (req.user) {
         if (req.user.role == 'admin') {
@@ -95,7 +100,7 @@ console.log(req.user);
     }else{
         res.status(500).send({message: 'no access 2'});
     }
-
+    */
 }
 
 const registro_cliente_admin = async function(req,res){
@@ -118,6 +123,8 @@ const registro_cliente_admin = async function(req,res){
     }else{
         res.status(500).send({message: 'no access'});
     }
+    
+
 }
 
 const obtener_cliente_admin = async function(req,res){
@@ -213,11 +220,4 @@ module.exports = {
     actualizar_cliente_admin,
     eliminar_cliente_admin,
     obtener_cliente_guest
-
 }
-
-/*
-
-
-
-*/

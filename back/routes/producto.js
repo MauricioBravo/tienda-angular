@@ -8,9 +8,9 @@ var productoController = require('../controllers/productoController');
 //que es un método post
 var api = express.Router(); //incializa express en su metodo router
 var auth = require('../middlewares/authenticate');
-
+//variable appi para guardar post, le andamos la ruta, utilizamos el middelware de auth, utilizamos el controlador de producto controller en  su método de registro producto 
 api.post('/registro_producto_admin',auth.auth, productoController.registro_producto_admin);
 
  //ya tenemos inicializada nuestra ruta y nuestro controlador de cliente
  module.exports = api; 
- 
+  

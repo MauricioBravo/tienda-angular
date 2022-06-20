@@ -18,6 +18,7 @@ var producto_route = require('./routes/producto');
 mongoose.connect('mongodb://127.0.0.1:27017/tienda',{useUnifiedTopology: true ,useNewUrlParser: true},(err, res)=>{
     if(err){
         console.log(err);
+        console.log("está fallando algo en db");
     }
     else{
         app.listen(port,function(){
