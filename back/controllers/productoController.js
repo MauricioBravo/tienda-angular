@@ -7,12 +7,13 @@
     if(req.user){
         if(req.user.role == 'admin'){
             let data = req.body;
-            console.log(req.files  );
+            console.log(data);
+            console.log(req.files);
         }else{
-            es.status(500).send({message: 'no access'});
+            res.status(500).send({message: 'no access'});
         }
     }else{
-        es.status(500).send({message: 'no access'});
+        res.status(500).send({message: 'no access'});
     }
 }
  module.exports={ //exporto mi primer metodo
