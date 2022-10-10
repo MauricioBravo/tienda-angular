@@ -5,23 +5,22 @@ var moment = require('moment');
 var secret = 'mauribravo';
 
 exports.auth = function(req,res,next){
-    //console.log(req.headers);
+
     if(!req.headers.authorization){
         return res.status(403).send({message: 'no headers error 1'});
-
     }
     
 
     var token = req.headers.authorization.replace(/['"]+/g,'');
     var segment = token.split('.');
 
+    next();
 
     if(segment.length != 3){
-        return res.status(403).send({message: 'no headers error distinto a 3'});
+        return res.status(403).send({message: 'invalid token distinto a 3'});
     }else{
         try {
             var payload = jwt.decode(token,secret);
-            //console.log(payload);
            
             if (payload.exp<=moment().unix()){
                 return res.status(403).send({message: 'token expirado'});

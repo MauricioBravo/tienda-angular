@@ -68,54 +68,34 @@ const login_cliente = async function (req, res) {
 }
 
 const listar_clientes_filtro_admin = async function (req,res){
-
-    let tipo = req.params['tipo']; //arrays de parametros por ruta
-    let filtro = req.params['filtro'];
-
-    if(tipo == null || tipo == 'null'){
-        let reg = await Cliente.find();
-        res.status(200).send({data:reg});
-    }else{
-        if(tipo == 'apellidos'){
-        let reg = await Cliente.find({apellidos: new RegExp(filtro,'i')});
-        res.status(200).send({data:reg});
-
-        }else if(tipo == 'correo'){
-            let reg = await Cliente.find({email: new RegExp(filtro,'i')});
-            res.status(200).send({data:reg});
-        }
-    }
-}
-    
-    // if(tipo == null || tipo == 'null'){
-    //     let reg = await Cliente.find();
-    //     res.status(200).send({data:reg});
-    // }else{
-    //     
-
-
-
-/*
 console.log(req.user);
-    if (req.user) {
-        if (req.user.role == 'admin') {
+    if(req.user){
+        if(req.user.role == 'admin'){
             
             let tipo = req.params['tipo'];
             let filtro=req.params['filtro'];
+
             console.log(tipo);
+
             if(tipo == null || tipo == 'null'){
                 let reg = await Cliente.find();
-                 res.status(200).send({data:reg});
-
-            
+                res.status(200).send({data:reg});
+            }else{
+            if(tipo == 'apellidos'){
+                let reg = await Cliente.find({apellidos:new RegExp(filtro,'i')});
+                res.status(200).send({data:reg});
+            }else if(tipo == 'correo'){
+                let reg = await Cliente.find({email:new RegExp(filtro,'i')});
+                res.status(200).send({data:reg});
+            }
             }
         }else{
-            res.status(500).send({message: 'no access'});
+            res.status(500).send({message:'NoAcces'});
         }
     }else{
-        res.status(500).send({message: 'no access 2'});
+        res.status(500).send({message:'NoAcces'});
     }
-*/
+}
 
 
 
